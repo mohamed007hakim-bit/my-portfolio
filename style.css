@@ -1,0 +1,1724 @@
+:root {
+    --bg-color: #0a0a0a;
+    --surface: #111111;
+    --surface-2: #171717;
+    --text-main: #f4f4f0;
+    --text-muted: #8b8b86;
+    --line: rgba(244, 244, 240, 0.16);
+    --line-soft: rgba(244, 244, 240, 0.08);
+    --accent-color: #d7ff3f;
+    --accent-glow: rgba(215, 255, 63, 0.18);
+    --max-width: 1440px;
+    --ease: cubic-bezier(.2, .75, .25, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: var(--bg-color);
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Inter', Arial, sans-serif;
+    line-height: 1.45;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background:
+        radial-gradient(circle at 78% 12%, rgba(215,255,63,.055), transparent 25%),
+        radial-gradient(circle at 12% 70%, rgba(255,255,255,.025), transparent 28%);
+}
+
+a {
+    color: inherit;
+}
+
+button,
+a,
+.service-card,
+.brand-card,
+.close-btn {
+    -webkit-tap-highlight-color: transparent;
+}
+
+#particles-js {
+    display: none;
+}
+
+/* =========================================================
+   GLOBAL / TYPOGRAPHY
+   ========================================================= */
+
+.section-title {
+    margin: 0;
+    font-size: clamp(2.4rem, 6vw, 6.5rem);
+    line-height: .9;
+    font-weight: 900;
+    letter-spacing: -0.065em;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 52px;
+    height: 4px;
+    margin-top: 22px;
+    background: var(--accent-color);
+}
+
+.section-divider {
+    position: relative;
+    width: min(calc(100% - 10vw), var(--max-width));
+    height: 1px;
+    margin: 0 auto;
+    background: var(--line);
+    display: block;
+}
+
+.section-divider::before,
+.section-divider::after {
+    content: none;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+    position: relative;
+    min-height: 100svh;
+    padding: 34px 5vw 70px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background:
+        linear-gradient(90deg, transparent 49.95%, rgba(255,255,255,.045) 50%, transparent 50.05%);
+}
+
+.hero::before {
+    content: "PORTFOLIO / 2026";
+    position: absolute;
+    top: 34px;
+    right: 5vw;
+    font-family: 'DM Mono', monospace;
+    font-size: .68rem;
+    letter-spacing: .14em;
+    color: var(--text-muted);
+}
+
+.hero::after {
+    content: "01";
+    position: absolute;
+    left: 5vw;
+    bottom: 42px;
+    font-family: 'DM Mono', monospace;
+    font-size: .7rem;
+    color: var(--text-muted);
+    letter-spacing: .15em;
+}
+
+.hero-content-wrapper {
+    width: min(100%, var(--max-width));
+    min-height: 78vh;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(380px, .95fr);
+    align-items: center;
+    gap: 3vw;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-text {
+    max-width: none;
+    position: relative;
+    z-index: 3;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+    margin-bottom: 26px;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    color: var(--text-muted);
+    font-family: 'DM Mono', monospace;
+    font-size: .72rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.hero-badge i {
+    color: var(--accent-color);
+    font-size: .72rem;
+}
+
+.hero-text h2 {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: clamp(1rem, 1.5vw, 1.35rem);
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+}
+
+.hero-text h1 {
+    margin: 4px 0 20px;
+    font-size: clamp(4.8rem, 10.8vw, 10.5rem);
+    line-height: .79;
+    letter-spacing: -.085em;
+    font-weight: 900;
+    text-transform: uppercase;
+    max-width: 980px;
+}
+
+.hero-text h1 span {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--text-main);
+    text-shadow: none;
+}
+
+.hero-text .subtitle {
+    margin: 28px 0 0;
+    color: var(--text-main);
+    font-family: 'DM Mono', monospace;
+    font-size: .72rem;
+    font-weight: 500;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+}
+
+.quote {
+    max-width: 440px;
+    margin-top: 42px;
+    padding: 0;
+    border: 0;
+    color: var(--text-muted);
+    font-size: .88rem;
+    font-style: normal;
+    line-height: 1.7;
+}
+
+.quote::before {
+    content: "“";
+    display: block;
+    color: var(--accent-color);
+    font-size: 2rem;
+    line-height: .7;
+    margin-bottom: 10px;
+}
+
+.quote small {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--text-main) !important;
+    font-family: 'DM Mono', monospace;
+    font-size: .63rem;
+    letter-spacing: .14em;
+}
+
+.hero-img {
+    height: min(78vh, 760px);
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.hero-img::before {
+    content: "SELECTED WORK / VISUAL DESIGN";
+    position: absolute;
+    top: 11%;
+    right: 0;
+    font-family: 'DM Mono', monospace;
+    font-size: .58rem;
+    letter-spacing: .14em;
+    color: var(--text-muted);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+.hero-img::after {
+    content: "";
+    position: absolute;
+    width: 72%;
+    height: 72%;
+    border: 1px solid var(--line);
+    right: 8%;
+    top: 14%;
+    z-index: -1;
+}
+
+.profile-container-masked {
+    width: min(100%, 510px);
+    height: min(78vh, 680px);
+    position: relative;
+    overflow: hidden;
+    -webkit-mask-image: none;
+    mask-image: none;
+    background: var(--surface);
+    border-radius: 0;
+}
+
+.profile-container-masked::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg, transparent 55%, rgba(0,0,0,.72) 100%),
+        linear-gradient(90deg, rgba(0,0,0,.12), transparent 45%);
+}
+
+.profile-container-masked::after {
+    content: "M.A";
+    position: absolute;
+    z-index: 2;
+    right: 20px;
+    bottom: 16px;
+    color: rgba(255,255,255,.55);
+    font-family: 'DM Mono', monospace;
+    font-size: .62rem;
+    letter-spacing: .16em;
+}
+
+.profile-pic-masked {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(100%) contrast(1.06);
+    transition: transform 1s var(--ease), filter 1s var(--ease);
+}
+
+.profile-container-masked:hover .profile-pic-masked {
+    transform: scale(1.035);
+    filter: grayscale(0%) contrast(1.03);
+}
+
+/* =========================================================
+   SPECIALIZATIONS / PROJECT INDEX
+   ========================================================= */
+
+.services {
+    width: min(calc(100% - 10vw), var(--max-width));
+    padding: 120px 0 130px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    background: transparent;
+    text-align: left;
+}
+
+.services::before {
+    content: "02 / DISCIPLINES";
+    display: block;
+    margin-bottom: 26px;
+    color: var(--accent-color);
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem;
+    letter-spacing: .15em;
+}
+
+.services-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 70px;
+    border-top: 1px solid var(--line);
+}
+
+.service-card {
+    position: relative;
+    min-height: 105px;
+    padding: 25px 0;
+    display: grid;
+    grid-template-columns: 75px 1fr auto;
+    align-items: center;
+    gap: 24px;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    border-radius: 0;
+    cursor: pointer;
+    transition: padding .45s var(--ease), background .45s var(--ease);
+}
+
+.service-card::before {
+    content: "→";
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%) translateX(12px);
+    color: var(--accent-color);
+    opacity: 0;
+    font-size: 1.5rem;
+    transition: opacity .35s var(--ease), transform .35s var(--ease);
+}
+
+.service-card i {
+    color: var(--text-muted);
+    font-size: .9rem;
+    margin: 0;
+    transition: color .35s ease, transform .35s ease;
+}
+
+.service-card h3 {
+    margin: 0;
+    font-size: clamp(1.7rem, 4vw, 4.3rem);
+    line-height: .95;
+    letter-spacing: -.055em;
+    font-weight: 800;
+    transition: transform .45s var(--ease), color .35s ease;
+}
+
+.clickable-badge {
+    margin: 0 38px 0 0;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    color: var(--text-muted);
+    font-family: 'DM Mono', monospace;
+    font-size: .58rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.service-card:hover {
+    transform: none;
+    padding-left: 18px;
+    padding-right: 50px;
+    border-color: var(--line);
+    background: rgba(255,255,255,.025);
+    box-shadow: none;
+}
+
+.service-card:hover::before {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+.service-card:hover i {
+    color: var(--accent-color);
+    transform: rotate(-8deg);
+}
+
+.service-card:hover h3 {
+    color: var(--accent-color);
+    transform: translateX(8px);
+}
+
+/* =========================================================
+   BRANDS / CLIENTS
+   ========================================================= */
+
+.brands-section {
+    width: min(calc(100% - 10vw), var(--max-width));
+    padding: 120px 0;
+    margin: 0 auto;
+    text-align: left;
+    position: relative;
+    z-index: 2;
+}
+
+.brands-section::before {
+    content: "03 / CLIENTS";
+    display: block;
+    margin-bottom: 26px;
+    color: var(--accent-color);
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem;
+    letter-spacing: .15em;
+}
+
+.brands-section > p {
+    margin: 28px 0 0 !important;
+    color: var(--text-muted) !important;
+    text-align: left !important;
+    font-size: .85rem;
+}
+
+.brands-grid {
+    margin-top: 65px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+}
+
+.brand-card {
+    width: auto;
+    height: 260px;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-color);
+    border: 0;
+    border-radius: 0;
+    transition: background .45s ease;
+}
+
+.brand-card:hover {
+    transform: none;
+    border-color: transparent;
+    box-shadow: none;
+    background: var(--surface);
+}
+
+.brand-card img {
+    max-width: 65%;
+    max-height: 90px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: .65;
+    transition: filter .45s ease, opacity .45s ease, transform .45s var(--ease);
+}
+
+.brand-card:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.04);
+}
+
+/* =========================================================
+   MODALS / PROJECT PAGES
+   ========================================================= */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999999;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 55px 5vw 70px;
+    background: rgba(7,7,7,.97);
+    backdrop-filter: blur(18px);
+    overflow-y: auto;
+}
+
+.modal::before {
+    content: "PROJECT VIEW";
+    position: fixed;
+    top: 24px;
+    left: 5vw;
+    color: var(--text-muted);
+    font-family: 'DM Mono', monospace;
+    font-size: .58rem;
+    letter-spacing: .15em;
+}
+
+.modal-content {
+    width: min(100%, 1240px);
+    margin: 0 auto;
+    position: relative;
+    padding: 35px 0 0;
+    background: transparent;
+}
+
+.modal-content h2 {
+    max-width: 950px;
+    margin: 0 auto 12px !important;
+    color: var(--text-main) !important;
+    font-size: clamp(2.2rem, 6vw, 6rem) !important;
+    line-height: .9;
+    letter-spacing: -.06em;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: left !important;
+}
+
+.modal-content > p {
+    max-width: 950px;
+    margin: 0 auto 55px !important;
+    color: var(--text-muted) !important;
+    font-family: 'DM Mono', monospace;
+    font-size: .68rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-align: left !important;
+}
+
+.close-btn {
+    position: fixed;
+    top: 18px;
+    right: 5vw;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    color: var(--text-main);
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 1000000;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    transition: color .3s ease, border-color .3s ease, transform .3s ease;
+}
+
+.close-btn:hover {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    transform: rotate(90deg);
+}
+
+.modal-grid {
+    width: min(100%, 1100px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.modal-grid img {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    display: block;
+    object-fit: contain;
+    background: var(--surface);
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    transition: transform .5s var(--ease);
+}
+
+.modal-grid img:hover {
+    transform: scale(1.012);
+}
+
+.modal-grid .full-width-img {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+/* =========================================================
+   BRANDING GALLERY
+   CAMPAIGN FIRST + COMPACT IMAGES
+   ========================================================= */
+
+#brandingModal .modal-grid {
+    width: min(100%, 1120px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+    align-items: start;
+}
+
+#brandingModal .modal-grid img,
+#brandingModal .modal-grid img.full-width-img {
+    grid-column: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    display: block;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: var(--surface) !important;
+    border: 1px solid var(--line-soft) !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    transition: transform .45s var(--ease), border-color .35s ease, opacity .35s ease;
+}
+
+/* Campaign = first image */
+#brandingModal .modal-grid img:first-child {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    max-height: 420px;
+    margin-bottom: 4px !important;
+    border-radius: 10px !important;
+    object-fit: contain !important;
+}
+
+/* Small branding images */
+#brandingModal .modal-grid img:not(:first-child) {
+    cursor: zoom-in;
+}
+
+#brandingModal .modal-grid img:not(:first-child):hover {
+    transform: translateY(-3px) scale(1.015);
+    border-color: rgba(215,255,63,.45) !important;
+}
+
+#brandingModal .modal-grid img {
+    object-fit: contain !important;
+}
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contact {
+    width: min(calc(100% - 10vw), var(--max-width));
+    padding: 135px 0 120px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    background: transparent;
+    text-align: left;
+}
+
+.contact::before {
+    content: "04 / CONTACT";
+    display: block;
+    margin-bottom: 26px;
+    color: var(--accent-color);
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem;
+    letter-spacing: .15em;
+}
+
+.contact .section-title {
+    max-width: 950px;
+}
+
+.contact-links {
+    justify-content: flex-start;
+    gap: 0;
+    margin-top: 65px;
+    display: flex;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--line);
+}
+
+.btn-contact {
+    min-width: 170px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background: transparent;
+    color: var(--text-main);
+    text-decoration: none;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    border-radius: 0;
+    font-family: 'DM Mono', monospace;
+    font-size: .68rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: background .35s ease, color .35s ease, padding .35s var(--ease);
+}
+
+.btn-contact i {
+    font-size: .9rem;
+}
+
+.btn-contact:hover {
+    background: var(--accent-color);
+    color: #080808;
+    box-shadow: none;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    width: min(calc(100% - 10vw), var(--max-width));
+    margin: 0 auto;
+    padding: 25px 0 35px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--line);
+    font-family: 'DM Mono', monospace;
+    font-size: .58rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    text-align: left;
+    background: transparent;
+}
+
+/* =========================================================
+   SELECTION / SCROLLBAR
+   ========================================================= */
+
+::selection {
+    color: #080808;
+    background: var(--accent-color);
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3b3b3b;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+    .hero-content-wrapper {
+        grid-template-columns: 1fr;
+        gap: 55px;
+        padding-top: 60px;
+    }
+
+    .hero {
+        min-height: auto;
+        padding-top: 100px;
+    }
+
+    .hero-img {
+        height: 600px;
+        min-height: 0;
+    }
+
+    .profile-container-masked {
+        width: min(82vw, 500px);
+        height: 600px;
+    }
+
+    .hero-img::before {
+        right: 3%;
+    }
+
+    .hero-text h1 {
+        font-size: clamp(4.5rem, 14vw, 8rem);
+    }
+
+    #brandingModal .modal-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    #brandingModal .modal-grid img:first-child {
+        max-height: 360px;
+    }
+}
+
+@media (max-width: 700px) {
+    .hero {
+        padding: 85px 6vw 60px;
+        background: none;
+    }
+
+    .hero::before {
+        top: 24px;
+        right: 6vw;
+        font-size: .55rem;
+    }
+
+    .hero-content-wrapper {
+        width: 100%;
+        min-height: 0;
+        gap: 48px;
+    }
+
+    .hero-text {
+        order: 2;
+    }
+
+    .hero-img {
+        order: 1;
+        height: 470px;
+        width: 100%;
+    }
+
+    .profile-container-masked {
+        width: 84vw;
+        max-width: 390px;
+        height: 470px;
+    }
+
+    .hero-img::after {
+        width: 76%;
+        height: 80%;
+        right: 2%;
+        top: 10%;
+    }
+
+    .hero-text h1 {
+        font-size: clamp(3.5rem, 18vw, 6rem);
+        line-height: .82;
+    }
+
+    .hero-text h1 span {
+        -webkit-text-stroke-width: 1px;
+    }
+
+    .hero-text .subtitle {
+        font-size: .58rem;
+        line-height: 1.7;
+    }
+
+    .quote {
+        margin-top: 32px;
+        font-size: .78rem;
+    }
+
+    .services,
+    .brands-section,
+    .contact {
+        width: calc(100% - 12vw);
+        padding-top: 90px;
+        padding-bottom: 90px;
+    }
+
+    .services-grid {
+        margin-top: 48px;
+    }
+
+    .service-card {
+        min-height: 90px;
+        grid-template-columns: 35px 1fr;
+        gap: 10px;
+        padding: 20px 0;
+    }
+
+    .service-card h3 {
+        font-size: clamp(1.5rem, 7vw, 2.5rem);
+    }
+
+    .clickable-badge {
+        display: none;
+    }
+
+    .service-card::before {
+        right: 2px;
+    }
+
+    .brands-grid {
+        grid-template-columns: 1fr;
+        margin-top: 48px;
+    }
+
+    .brand-card {
+        height: 200px;
+    }
+
+    .brand-card img {
+        max-width: 58%;
+    }
+
+    .contact-links {
+        margin-top: 45px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .btn-contact {
+        min-width: 0;
+        width: 100%;
+        padding: 18px 12px;
+        font-size: .56rem;
+    }
+
+    .modal {
+        padding: 65px 6vw 45px;
+    }
+
+    .modal-content h2 {
+        font-size: clamp(2.3rem, 11vw, 4rem) !important;
+    }
+
+    .modal-content > p {
+        font-size: .58rem;
+        line-height: 1.6;
+        margin-bottom: 35px !important;
+    }
+
+    .modal-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    #brandingModal .modal-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    #brandingModal .modal-grid img:first-child {
+        max-height: none;
+    }
+
+    .close-btn {
+        top: 12px;
+        right: 6vw;
+        width: 38px;
+        height: 38px;
+        font-size: 24px;
+    }
+
+    footer {
+        width: calc(100% - 12vw);
+        padding-bottom: 28px;
+        font-size: .52rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+/* =========================================================
+   FINAL EDITORIAL LINES BACKGROUND
+   Only lines — visible across the whole site + inside modals
+   ========================================================= */
+
+/* Keep all main surfaces transparent enough to reveal lines */
+body,
+.hero,
+.services,
+.brands-section,
+.contact,
+footer,
+.section-divider {
+    background-color: transparent !important;
+}
+
+/* Main website background */
+body {
+    position: relative;
+    isolation: isolate;
+    background: #0a0a0a !important;
+}
+
+/* Remove old body glow and replace it with clean editorial lines */
+body::before {
+    content: "";
+    position: fixed;
+    inset: -20%;
+    z-index: 0;
+    pointer-events: none;
+
+    background:
+        /* fine diagonal lines */
+        repeating-linear-gradient(
+            118deg,
+            transparent 0,
+            transparent 78px,
+            rgba(244,244,240,.055) 79px,
+            transparent 80px
+        ),
+
+        /* second direction */
+        repeating-linear-gradient(
+            62deg,
+            transparent 0,
+            transparent 118px,
+            rgba(215,255,63,.035) 119px,
+            transparent 120px
+        );
+
+    opacity: .95;
+    transform: scale(1.12);
+}
+
+/* Extra crossing lines to make the composition richer */
+body::after {
+    content: "";
+    position: fixed;
+    inset: -10%;
+    z-index: 0;
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            transparent 0 19%,
+            rgba(244,244,240,.045) 19.08%,
+            transparent 19.16%
+        ),
+        linear-gradient(
+            35deg,
+            transparent 0 72%,
+            rgba(215,255,63,.055) 72.08%,
+            transparent 72.16%
+        ),
+        linear-gradient(
+            90deg,
+            transparent 0 50%,
+            rgba(244,244,240,.025) 50.06%,
+            transparent 50.12%
+        );
+
+    opacity: .9;
+    animation: editorialLinesMove 3.2s linear infinite;
+}
+
+.hero,
+.services,
+.brands-section,
+.contact,
+footer,
+.section-divider {
+    position: relative;
+    z-index: 2;
+}
+
+/* Fast movement */
+@keyframes editorialLinesMove {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1.08);
+    }
+    50% {
+        transform: translate3d(-32px, 24px, 0) scale(1.08);
+    }
+    100% {
+        transform: translate3d(0, 0, 0) scale(1.08);
+    }
+}
+
+/* =========================================================
+   MODAL BACKGROUND
+   Lines stay visible BEHIND the project images
+   ========================================================= */
+
+.modal {
+    background: rgba(7, 7, 7, .78) !important;
+    backdrop-filter: blur(10px);
+    isolation: isolate;
+}
+
+.modal::after {
+    content: "";
+    position: fixed;
+    inset: -15%;
+    z-index: 0;
+    pointer-events: none;
+
+    background:
+        repeating-linear-gradient(
+            118deg,
+            transparent 0,
+            transparent 82px,
+            rgba(244,244,240,.07) 83px,
+            transparent 84px
+        ),
+        repeating-linear-gradient(
+            62deg,
+            transparent 0,
+            transparent 128px,
+            rgba(215,255,63,.045) 129px,
+            transparent 130px
+        ),
+        linear-gradient(
+            135deg,
+            transparent 0 28%,
+            rgba(244,244,240,.045) 28.08%,
+            transparent 28.16%
+        );
+
+    opacity: .9;
+    animation: modalLinesMove 2.8s linear infinite;
+}
+
+.modal-content {
+    position: relative;
+    z-index: 3;
+}
+
+.close-btn {
+    z-index: 5 !important;
+}
+
+@keyframes modalLinesMove {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    50% {
+        transform: translate3d(38px, -26px, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* Branding: a little more background space around the images */
+#brandingModal .modal-grid {
+    position: relative;
+    z-index: 3;
+}
+
+@media (max-width: 700px) {
+    body::before {
+        background:
+            repeating-linear-gradient(
+                118deg,
+                transparent 0,
+                transparent 58px,
+                rgba(244,244,240,.05) 59px,
+                transparent 60px
+            ),
+            repeating-linear-gradient(
+                62deg,
+                transparent 0,
+                transparent 92px,
+                rgba(215,255,63,.03) 93px,
+                transparent 94px
+            );
+    }
+
+    body::after {
+        display: none;
+    }
+
+    .modal::after {
+        background:
+            repeating-linear-gradient(
+                118deg,
+                transparent 0,
+                transparent 62px,
+                rgba(244,244,240,.065) 63px,
+                transparent 64px
+            ),
+            repeating-linear-gradient(
+                62deg,
+                transparent 0,
+                transparent 96px,
+                rgba(215,255,63,.04) 97px,
+                transparent 98px
+            );
+    }
+}
+
+/* =========================================================
+   PREMIUM CLIENT CARDS
+   ========================================================= */
+
+.brands-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 16px !important;
+    background: transparent !important;
+    border: 0 !important;
+}
+
+.brand-card {
+    position: relative;
+    width: 100% !important;
+    height: 240px !important;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 35px !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.012)
+        ) !important;
+
+    border: 1px solid rgba(255,255,255,.10) !important;
+    border-radius: 18px !important;
+
+    overflow: hidden;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.05),
+        0 12px 40px rgba(0,0,0,.22);
+
+    transition:
+        transform .45s var(--ease),
+        border-color .45s ease,
+        box-shadow .45s ease,
+        background .45s ease;
+}
+
+/* لمعة داخلية */
+.brand-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 20%,
+            rgba(215,255,63,.08) 50%,
+            transparent 80%
+        );
+
+    opacity: 0;
+    transform: translateX(-30%);
+    transition: opacity .45s ease, transform .65s var(--ease);
+}
+
+/* خط صغير ديكوري */
+.brand-card::after {
+    content: "CLIENT";
+    position: absolute;
+    top: 16px;
+    left: 18px;
+
+    font-family: 'DM Mono', monospace;
+    font-size: .5rem;
+    letter-spacing: .16em;
+    color: rgba(255,255,255,.32);
+}
+
+/* اللوجو */
+.brand-card img {
+    position: relative;
+    z-index: 2;
+
+    max-width: 68% !important;
+    max-height: 90px !important;
+
+    object-fit: contain !important;
+
+    filter: grayscale(100%);
+    opacity: .65;
+
+    transition:
+        transform .5s var(--ease),
+        filter .45s ease,
+        opacity .45s ease;
+}
+
+/* Porsche */
+.brand-card:nth-child(3) img {
+    width: 170px !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: contain !important;
+    transform: scale(1.25);
+}
+
+/* Hover */
+.brand-card:hover {
+    transform: translateY(-8px) !important;
+
+    border-color: rgba(215,255,63,.35) !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.07),
+            rgba(255,255,255,.018)
+        ) !important;
+
+    box-shadow:
+        0 18px 50px rgba(0,0,0,.35),
+        0 0 35px rgba(215,255,63,.06) !important;
+}
+
+.brand-card:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.brand-card:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.06);
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .brands-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .brand-card {
+        height: 200px !important;
+    }
+
+    .brand-card img {
+        max-width: 58% !important;
+    }
+
+    .brand-card.porsche-brand img {
+        max-width: 52% !important;
+        max-height: 100px !important;
+    }
+}
+/* =========================================================
+   INSTAGRAM-STYLE IMAGE VIEWER
+   ========================================================= */
+
+.image-viewer {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999999;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.image-viewer.active {
+    display: flex;
+}
+
+.image-viewer img {
+    display: block;
+
+    max-width: min(92vw, 1200px);
+    max-height: 90vh;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.55);
+
+    animation: imageViewerIn .28s cubic-bezier(.2,.8,.2,1);
+}
+
+.image-viewer-close {
+    position: fixed;
+    top: 22px;
+    right: 25px;
+
+    width: 46px;
+    height: 46px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.05);
+    color: white;
+
+    font-size: 26px;
+
+    cursor: pointer;
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        color .3s ease;
+}
+
+.image-viewer-close:hover {
+    transform: rotate(90deg);
+    background: var(--accent-color);
+    color: #000;
+}
+
+@keyframes imageViewerIn {
+    from {
+        opacity: 0;
+        transform: scale(.82);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* يمنع تمرير الصفحة أثناء المشاهدة */
+body.image-viewer-open {
+    overflow: hidden;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+
+    .image-viewer {
+        padding: 15px;
+    }
+
+    .image-viewer img {
+        max-width: 94vw;
+        max-height: 84vh;
+        border-radius: 8px;
+    }
+
+    .image-viewer-close {
+        top: 14px;
+        right: 14px;
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+    }
+}
+
+/* =========================================================
+   PREMIUM GALLERY SYSTEM
+   BIG CAMPAIGN + MEDIUM INDIVIDUAL IMAGES
+   ========================================================= */
+
+.modal-content {
+    width: min(94vw, 1400px) !important;
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+}
+
+/* كل الـ galleries */
+.modal-grid {
+    width: 100% !important;
+    max-width: 1250px !important;
+    margin: 0 auto !important;
+
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+
+    gap: 24px !important;
+    align-items: start !important;
+}
+
+/* =========================================================
+   الصورة المجمعة / الرئيسية
+   ========================================================= */
+
+.modal-grid .full-width-img {
+    grid-column: 1 / -1 !important;
+
+    width: 100% !important;
+    height: auto !important;
+
+    max-width: 100% !important;
+    max-height: none !important;
+
+    display: block !important;
+
+    object-fit: contain !important;
+    object-position: center !important;
+
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+
+    border-radius: 10px !important;
+
+    box-shadow:
+        0 22px 55px rgba(0,0,0,.42),
+        0 10px 30px rgba(215,255,63,.08) !important;
+
+    margin-bottom: 8px !important;
+}
+
+/* =========================================================
+   الصور الفردية
+   ========================================================= */
+
+.modal-grid img:not(.full-width-img) {
+    width: 100% !important;
+    height: auto !important;
+
+    max-width: 100% !important;
+    min-height: 0 !important;
+
+    display: block !important;
+
+    object-fit: contain !important;
+    object-position: center !important;
+
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+
+    border-radius: 10px !important;
+
+    box-shadow:
+        0 16px 35px rgba(0,0,0,.35),
+        0 8px 24px rgba(215,255,63,.06) !important;
+
+    transition:
+        transform .35s var(--ease),
+        box-shadow .35s ease;
+}
+
+.modal-grid img:not(.full-width-img):hover {
+    transform: translateY(-5px) scale(1.01);
+
+    box-shadow:
+        0 22px 42px rgba(0,0,0,.42),
+        0 10px 30px rgba(215,255,63,.12) !important;
+}
+
+/* =========================================================
+   BRANDING
+   ========================================================= */
+
+#brandingModal .modal-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 20px !important;
+}
+
+#brandingModal .branding-cover {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+}
+
+#brandingModal .modal-grid img:not(.branding-cover) {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+}
+
+/* =========================================================
+   PACKAGING
+   ========================================================= */
+
+#galleryModal .modal-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 20px !important;
+}
+
+#galleryModal .full-width-img {
+    grid-column: 1 / -1 !important;
+}
+
+/* =========================================================
+   UMRAH
+   ========================================================= */
+
+#umrahModal .modal-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 20px !important;
+}
+
+#umrahModal .modal-grid img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+}
+
+/* =========================================================
+   SPORTS
+   ========================================================= */
+
+#socialModal .modal-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 20px !important;
+}
+
+#socialModal .modal-grid img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+}
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+#typoModal .modal-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 22px !important;
+}
+
+#typoModal .modal-grid img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+}
+
+/* =========================================================
+   PORSCHE
+   ========================================================= */
+
+#porscheModal .modal-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 22px !important;
+}
+
+#porscheModal .modal-grid img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .modal-content {
+        width: 94vw !important;
+        max-width: none !important;
+    }
+
+    .modal-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 14px !important;
+    }
+
+    #brandingModal .modal-grid,
+    #galleryModal .modal-grid,
+    #umrahModal .modal-grid,
+    #socialModal .modal-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    #typoModal .modal-grid,
+    #porscheModal .modal-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .modal-grid .full-width-img {
+        grid-column: 1 / -1 !important;
+    }
+}
