@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Abdelhakim | Graphic & Visual Designer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .branding-gallery-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            align-items: start;
+        }
+
+        .branding-gallery-grid .branding-cover {
+            grid-column: 1 / -1 !important;
+            width: 100% !important;
+            aspect-ratio: 2.45 / 1;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .branding-gallery-grid img:not(.branding-cover) {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            background: #111;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 10px;
+            transition: transform .35s ease, border-color .35s ease, opacity .35s ease;
+        }
+
+        .branding-gallery-grid img:not(.branding-cover):hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-color);
+            opacity: .96;
+        }
+
+        @media (max-width: 700px) {
+            .branding-gallery-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px;
+            }
+
+            .branding-gallery-grid .branding-cover {
+                aspect-ratio: 16 / 7;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الخلفية المتحركة للموقع كله -->
+    <div id="particles-js"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content-wrapper">
+            <!-- الكلام على الشمال -->
+            <div class="hero-text">
+                <span class="hero-badge animate-text"><i class="fa-solid fa-film"></i> Visual Artist & Editor</span>
+                <h2 class="animate-text">Mohamed</h2>
+                <h1 class="animate-text">ABDEL<span>HAKIM</span></h1>
+                <p class="subtitle animate-text">GRAPHIC DESIGNER | VISUAL DESIGNER</p>
+                <p class="quote animate-text">"GOOD DESIGN IS CLEAR THINKING MADE VISUAL."<br><small style="color: var(--accent-color);">IDEAS DESIGNED TO INSPIRE</small></p>
+            </div>
+            
+            <!-- الصورة على اليمين بالدمج -->
+            <div class="hero-img animate-img">
+                <div class="profile-container-masked">
+                    <img src="images/profile.png" alt="Mohamed Abdelhakim" onerror="tryNext(this, ['images/profile.jpg', 'images/profile.jpeg'])" class="profile-pic-masked">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- خط فاصل -->
+    <div class="section-divider"></div>
+
+    <!-- Specializations Section -->
+    <section class="services">
+        <h2 class="section-title">Specializations</h2>
+        <div class="services-grid">
+            <div class="service-card interactive" onclick="openBrandingGallery()"><i class="fa-solid fa-pen-nib"></i><h3>BRANDING</h3><span class="clickable-badge">Click to View Work</span></div>
+            
+            <div class="service-card interactive" onclick="openUmrahGallery()">
+                <i class="fa-solid fa-kaaba"></i>
+                <h3>UMRAH & HAJJ</h3>
+                <span class="clickable-badge">Click to View Work</span>
+            </div>
+            
+            <div class="service-card interactive" onclick="openGallery()">
+                <i class="fa-solid fa-box-open"></i>
+                <h3>PACKAGING</h3>
+                <span class="clickable-badge">Click to View Work</span>
+            </div>
+
+            <div class="service-card interactive" onclick="openSocialGallery()">
+                <i class="fa-solid fa-futbol"></i>
+                <h3>SPORTS GRAPHICS</h3>
+                <span class="clickable-badge">Click to View Work</span>
+            </div>
+
+            <div class="service-card interactive" onclick="openTypoGallery()">
+                <i class="fa-solid fa-font"></i>
+                <h3>TYPOGRAPHY</h3>
+                <span class="clickable-badge">Click to View Work</span>
+            </div>
+
+            <div class="service-card interactive" onclick="openPorscheGallery()">
+                <i class="fa-solid fa-car-side"></i>
+                <h3>AUTOMOTIVE DESIGN</h3>
+                <span class="clickable-badge">Click to View Work</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- خط فاصل -->
+    <div class="section-divider"></div>
+
+    <!-- Featured Brands Section -->
+    <section class="brands-section">
+        <h2 class="section-title">Brands & Clients</h2>
+        <p style="color: var(--text-muted); margin-top: -1.5rem; margin-bottom: 2rem; text-align: center;">Companies & Brands I've Worked With</p>
+        
+        <div class="brands-grid">
+
+    <div class="brand-card">
+        <img src="images/fawry.png" alt="Fawry Logo"
+             onerror="tryNext(this, ['images/fawry.jpg', 'images/fawry.jpeg', 'images/Fawry.png', 'images/Fawry.jpg'])">
+    </div>
+
+    <div class="brand-card">
+        <img src="images/chipsy.png" alt="Chipsy Logo"
+             onerror="tryNext(this, ['images/chipsy.jpg', 'images/chipsy.jpeg', 'images/Chipsy.png', 'images/Chipsy.jpg'])">
+    </div>
+
+   <div class="brand-card porsche-brand">
+    <img src="images/porsche.png" alt="Porsche Logo"
+    onerror="tryNext(this, ['images/porsche.jpg', 'images/porsche.jpeg', 'images/Porsche.png', 'images/porsche.jpg'])">
+    </div>
+
+</div>
+        </div>
+    </section>
+
+    <!-- خط فاصل -->
+    <div class="section-divider"></div>
+
+    <!-- Modals -->
+    <div id="brandingModal" class="modal">
+        <span class="close-btn" onclick="closeBrandingGallery()">&times;</span>
+        <div class="modal-content">
+            <h2 style="text-align: center; margin-bottom: 10px; color: var(--accent-color); font-size: 2rem;">BRANDING PROJECTS</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 30px;">Selected Brand Identity & Visual Design Work</p>
+            <div class="modal-grid branding-gallery-grid">
+                <img class="full-width-img branding-cover" src="images/branding/campaign.png" alt="Branding Campaign" onerror="tryNext(this, ['images/branding/campaign.jpg', 'images/branding/campaign.jpeg'])">
+                <img src="images/branding/brand1.png" alt="Branding 1" onerror="tryNext(this, ['images/branding/brand1.jpg', 'images/branding/brand1.jpeg'])">
+                <img src="images/branding/brand2.png" alt="Branding 2" onerror="tryNext(this, ['images/branding/brand2.jpg', 'images/branding/brand2.jpeg'])">
+                <img src="images/branding/brand3.png" alt="Branding 3" onerror="tryNext(this, ['images/branding/brand3.jpg', 'images/branding/brand3.jpeg'])">
+                <img src="images/branding/brand4.png" alt="Branding 4" onerror="tryNext(this, ['images/branding/brand4.jpg', 'images/branding/brand4.jpeg'])">
+                <img src="images/branding/brand5.png" alt="Branding 5" onerror="tryNext(this, ['images/branding/brand5.jpg', 'images/branding/brand5.jpeg'])">
+                <img src="images/branding/brand6.png" alt="Branding 6" onerror="tryNext(this, ['images/branding/brand6.jpg', 'images/branding/brand6.jpeg'])">
+                <img src="images/branding/brand7.png" alt="Branding 7" onerror="tryNext(this, ['images/branding/brand7.jpg', 'images/branding/brand7.jpeg'])">
+                <img src="images/branding/brand8.png" alt="Branding 8" onerror="tryNext(this, ['images/branding/brand8.jpg', 'images/branding/brand8.jpeg'])">
+                <img src="images/branding/brand9.png" alt="Branding 9" onerror="tryNext(this, ['images/branding/brand9.jpg', 'images/branding/brand9.jpeg'])">
+                <img src="images/branding/brand10.png" alt="Branding 10" onerror="tryNext(this, ['images/branding/brand10.jpg', 'images/branding/brand10.jpeg'])">
+            </div>
+        </div>
+    </div>
+
+    <div id="umrahModal" class="modal">
+        <span class="close-btn" onclick="closeUmrahGallery()">&times;</span>
+        <div class="modal-content">
+            <h2 style="text-align: center; margin-bottom: 10px; color: var(--accent-color); font-size: 2rem;">UMRAH & HAJJ CAMPAIGNS</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 30px;">Posters & Visuals Designed for Travel & Umrah Companies</p>
+            <div class="modal-grid">
+                <img class="full-width-img"
+     src="images/umrah/full-campaign.jpg"
+     alt="Umrah Campaign"
+     onerror="tryNext(this, [
+         'images/umrah/full-campaign.png',
+         'images/umrah/full-campaign.jpeg',
+         'images/umrah/full-campaign.webp'
+     ])">
+                <img src="images/umrah/umrah1.png" alt="Umrah 1" onerror="tryNext(this, ['images/umrah/umrah1.jpg', 'images/umrah/umrah1.jpeg'])">
+                <img src="images/umrah/umrah2.png" alt="Umrah 2" onerror="tryNext(this, ['images/umrah/umrah2.jpg', 'images/umrah/umrah2.jpeg'])">
+                <img src="images/umrah/umrah3.png" alt="Umrah 3" onerror="tryNext(this, ['images/umrah/umrah3.jpg', 'images/umrah/umrah3.jpeg'])">
+                <img src="images/umrah/umrah4.png" alt="Umrah 4" onerror="tryNext(this, ['images/umrah/umrah4.jpg', 'images/umrah/umrah4.jpeg'])">
+                <img src="images/umrah/umrah5.png" alt="Umrah 5" onerror="tryNext(this, ['images/umrah/umrah5.jpg', 'images/umrah/umrah5.jpeg'])">
+                <img src="images/umrah/umrah6.png" alt="Umrah 6" onerror="tryNext(this, ['images/umrah/umrah6.jpg', 'images/umrah/umrah6.jpeg'])">
+                <img src="images/umrah/umrah7.png" alt="Umrah 7" onerror="tryNext(this, ['images/umrah/umrah7.jpg', 'images/umrah/umrah7.jpeg'])">
+            </div>
+        </div>
+    </div>
+
+    <div id="galleryModal" class="modal">
+        <span class="close-btn" onclick="closeGallery()">&times;</span>
+        <div class="modal-content">
+            <h2 style="text-align: center; margin-bottom: 10px; color: var(--accent-color); font-size: 2rem;">POTATO CHIPS PACKAGING</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 30px;">Complete Campaign & 6 Flavors Design</p>
+            <div class="modal-grid">
+                <img class="full-width-img" src="images/packaging/full-campaign.jpg" alt="Campaign" onerror="tryNext(this, ['images/packaging/full-campaign.jpeg', 'images/packaging/full-campaign.png'])">
+                <img src="images/packaging/flavor1.jpg" alt="Flavor 1" onerror="tryNext(this, ['images/packaging/flavor1.jpeg', 'images/packaging/flavor1.png'])">
+                <img src="images/packaging/flavor2.jpg" alt="Flavor 2" onerror="tryNext(this, ['images/packaging/flavor2.jpeg', 'images/packaging/flavor2.png'])">
+                <img src="images/packaging/flavor3.jpg" alt="Flavor 3" onerror="tryNext(this, ['images/packaging/flavor3.jpeg', 'images/packaging/flavor3.png'])">
+                <img src="images/packaging/flavor4.jpg" alt="Flavor 4" onerror="tryNext(this, ['images/packaging/flavor4.jpeg', 'images/packaging/flavor4.png'])">
+                <img src="images/packaging/flavor5.jpg" alt="Flavor 5" onerror="tryNext(this, ['images/packaging/flavor5.jpeg', 'images/packaging/flavor5.png'])">
+                <img src="images/packaging/flavor6.jpg" alt="Flavor 6" onerror="tryNext(this, ['images/packaging/flavor6.jpeg', 'images/packaging/flavor6.png'])">
+            </div>
+        </div>
+    </div>
+
+    <div id="socialModal" class="modal">
+        <span class="close-btn" onclick="closeSocialGallery()">&times;</span>
+        <div class="modal-content">
+            <h2 style="text-align: center; margin-bottom: 10px; color: var(--accent-color); font-size: 2rem;">SPORTS GRAPHICS DESIGNS</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 30px;">Matchday Posters, Player Concepts & Sports Visuals</p>
+            <div class="modal-grid">
+                <img src="images/Social/1.jpeg" alt="1" onerror="tryNext(this, ['images/Social/1.jpg', 'images/Social/1.png'])">
+                <img src="images/Social/2.jpeg" alt="2" onerror="tryNext(this, ['images/Social/2.jpg', 'images/Social/2.png'])">
+                <img src="images/Social/3.jpeg" alt="3" onerror="tryNext(this, ['images/Social/3.jpg', 'images/Social/3.png'])">
+                <img src="images/Social/4.jpeg" alt="4" onerror="tryNext(this, ['images/Social/4.jpg', 'images/Social/4.png'])">
+                <img src="images/Social/5.jpeg" alt="5" onerror="tryNext(this, ['images/Social/5.jpg', 'images/Social/5.png'])">
+                <img src="images/Social/6.jpeg" alt="6" onerror="tryNext(this, ['images/Social/6.jpg', 'images/Social/6.png'])">
+                <img src="images/Social/7.jpeg" alt="7" onerror="tryNext(this, ['images/Social/7.jpg', 'images/Social/7.png'])">
+                <img src="images/Social/8.png" alt="8" onerror="tryNext(this, ['images/Social/8.jpg', 'images/Social/8.jpeg'])">
+                <img src="images/Social/9.jpeg" alt="9" onerror="tryNext(this, ['images/Social/9.jpg', 'images/Social/9.png'])">
+                <img src="images/Social/10.png" alt="10" onerror="tryNext(this, ['images/Social/10.jpg', 'images/Social/10.jpeg'])">
+                <img src="images/Social/11.png" alt="11" onerror="tryNext(this, ['images/Social/11.jpg', 'images/Social/11.jpeg'])">
+                <img src="images/Social/12.jpeg" alt="12" onerror="tryNext(this, ['images/Social/12.jpg', 'images/Social/12.png'])">
+                <img src="images/Social/13.jpeg" alt="13" onerror="tryNext(this, ['images/Social/13.jpg', 'images/Social/13.png'])">
+                <img src="images/Social/14.jpeg" alt="14" onerror="tryNext(this, ['images/Social/14.jpg', 'images/Social/14.png'])">
+                <img src="images/Social/15.jpeg" alt="15" onerror="tryNext(this, ['images/Social/15.jpg', 'images/Social/15.png'])">
+                <img src="images/Social/16.jpeg" alt="16" onerror="tryNext(this, ['images/Social/16.jpg', 'images/Social/16.png'])">
+                <img src="images/Social/17.jpeg" alt="17" onerror="tryNext(this, ['images/Social/17.jpg', 'images/Social/17.png'])">
+                <img src="images/Social/18.jpeg" alt="18" onerror="tryNext(this, ['images/Social/18.jpg', 'images/Social/18.png'])">
+                <img src="images/Social/19.jpeg" alt="19" onerror="tryNext(this, ['images/Social/19.jpg', 'images/Social/19.png'])">
+                <img src="images/Social/20.jpeg" alt="20" onerror="tryNext(this, ['images/Social/20.jpg', 'images/Social/20.png'])">
+                <img src="images/Social/21.jpeg" alt="21" onerror="tryNext(this, ['images/Social/21.jpg', 'images/Social/21.png'])">
+                <img src="images/Social/22.jpeg" alt="22" onerror="tryNext(this, ['images/Social/22.jpg', 'images/Social/22.png'])">
+            </div>
+        </div>
+    </div>
+
+    <div id="typoModal" class="modal">
+        <span class="close-btn" onclick="closeTypoGallery()">&times;</span>
+        <div class="modal-content">
+            <h2 style="text-align: center; margin-bottom: 10px; color: var(--accent-color); font-size: 2rem;">NOUR AL SHAMS - BRANDING & TYPOGRAPHY</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 30px;">Visual Identity, Logo Design & Arabic Typography Concept</p>
+            <div class="modal-grid">
+                <img class="full-width-img" src="images/typography/typo-master.png" alt="Master" onerror="tryNext(this, ['images/typography/typo-master.jpg', 'images/typography/typo-master.jpeg'])">
+                <img class="full-width-img" src="images/typography/typo-board.png" alt="Board" onerror="tryNext(this, ['images/typography/typo-board.jpg', 'images/typography/typo-board.jpeg'])">
+            </div>
+        </div>
+    </div>
+
+    <div id="porscheModal" class="modal">
+        <span class="close-btn" onclick="closePorscheGallery()">&times;</span>
+        <div class="modal-content">
+            <h2 style="text-align: center; margin-bottom: 10px; color: var(--accent-color); font-size: 2rem;">PORSCHE AUTOMOTIVE ARTWORK</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 30px;">Concept Design, Sketches & Arabic Edition Visuals</p>
+            <div class="modal-grid">
+                <img class="full-width-img" src="images/porsche/porsche1.png" alt="Porsche 1" onerror="tryNext(this, ['images/porsche/porsche1.jpg', 'images/porsche/porsche1.jpeg'])">
+                <img class="full-width-img" src="images/porsche/porsche2.webp" alt="Porsche 2" onerror="tryNext(this, ['images/porsche/porsche2.png', 'images/porsche/porsche2.jpg', 'images/porsche/porsche2.jpeg'])">
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <h2 class="section-title">Let's Connect</h2>
+        <div class="contact-links">
+            <a href="https://wa.me/201143765466" target="_blank" class="btn-contact"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://www.facebook.com/jabal.hakeem/" target="_blank" class="btn-contact"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
+            <a href="https://www.behance.net/MohamedABDelhakem" target="_blank" class="btn-contact"><i class="fa-brands fa-behance"></i> Behance</a>
+            <a href="https://www.linkedin.com/in/mohamed-abd-el-hakem-539348429/" target="_blank" class="btn-contact"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Mohamed Abdelhakim. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript Functions -->
+    <script>
+        function tryNext(imgElement, sources) {
+            if (sources.length > 0) {
+                var nextSource = sources.shift();
+                imgElement.src = nextSource;
+            } else {
+                imgElement.onerror = null;
+            }
+        }
+
+        function openBrandingGallery() { var m = document.getElementById("brandingModal"); if(m) { m.style.display = "block"; document.body.style.overflow = "hidden"; } }
+        function closeBrandingGallery() { var m = document.getElementById("brandingModal"); if(m) { m.style.display = "none"; document.body.style.overflow = "auto"; } }
+
+        function openUmrahGallery() { var m = document.getElementById("umrahModal"); if(m) { m.style.display = "block"; document.body.style.overflow = "hidden"; } }
+        function closeUmrahGallery() { var m = document.getElementById("umrahModal"); if(m) { m.style.display = "none"; document.body.style.overflow = "auto"; } }
+
+        function openGallery() { var m = document.getElementById("galleryModal"); if(m) { m.style.display = "block"; document.body.style.overflow = "hidden"; } }
+        function closeGallery() { var m = document.getElementById("galleryModal"); if(m) { m.style.display = "none"; document.body.style.overflow = "auto"; } }
+
+        function openSocialGallery() { var m = document.getElementById("socialModal"); if(m) { m.style.display = "block"; document.body.style.overflow = "hidden"; } }
+        function closeSocialGallery() { var m = document.getElementById("socialModal"); if(m) { m.style.display = "none"; document.body.style.overflow = "auto"; } }
+
+        function openTypoGallery() { var m = document.getElementById("typoModal"); if(m) { m.style.display = "block"; document.body.style.overflow = "hidden"; } }
+        function closeTypoGallery() { var m = document.getElementById("typoModal"); if(m) { m.style.display = "none"; document.body.style.overflow = "auto"; } }
+
+        function openPorscheGallery() { var m = document.getElementById("porscheModal"); if(m) { m.style.display = "block"; document.body.style.overflow = "hidden"; } }
+        function closePorscheGallery() { var m = document.getElementById("porscheModal"); if(m) { m.style.display = "none"; document.body.style.overflow = "auto"; } }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById("brandingModal")) closeBrandingGallery();
+            if (event.target == document.getElementById("umrahModal")) closeUmrahGallery();
+            if (event.target == document.getElementById("galleryModal")) closeGallery();
+            if (event.target == document.getElementById("socialModal")) closeSocialGallery();
+            if (event.target == document.getElementById("typoModal")) closeTypoGallery();
+            if (event.target == document.getElementById("porscheModal")) closePorscheGallery();
+        }
+    </script>
+
+    <!-- Particles.js Script -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#00e5ff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": true },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#00e5ff", "opacity": 0.4, "width": 1 },
+                "move": { "enable": true, "speed": 2, "direction": "none", "out_mode": "out" }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "repulse" },
+                    "onclick": { "enable": true, "mode": "push" },
+                    "resize": true
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+
+<!-- Instagram-style Image Viewer -->
+<div id="imageViewer" class="image-viewer">
+    <button class="image-viewer-close" onclick="closeImageViewer()">&times;</button>
+    <img id="viewerImage" src="" alt="Preview">
+</div>
+
+<script>
+function openImageViewer(image) {
+    const viewer = document.getElementById("imageViewer");
+    const viewerImage = document.getElementById("viewerImage");
+
+    viewerImage.src = image.src;
+    viewerImage.alt = image.alt || "Preview";
+
+    viewer.classList.add("active");
+    document.body.classList.add("image-viewer-open");
+}
+
+function closeImageViewer() {
+    const viewer = document.getElementById("imageViewer");
+
+    viewer.classList.remove("active");
+    document.body.classList.remove("image-viewer-open");
+
+    document.getElementById("viewerImage").src = "";
+}
+
+/* قفل عند الضغط خارج الصورة */
+document.getElementById("imageViewer").addEventListener("click", function (e) {
+    if (e.target === this) {
+        closeImageViewer();
+    }
+});
+
+/* قفل بزر ESC */
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+        closeImageViewer();
+    }
+});
+
+/* أي صورة داخل الـGallery تفتح Viewer */
+document.querySelectorAll(".modal-grid img").forEach(function (img) {
+    img.style.cursor = "zoom-in";
+
+    img.addEventListener("click", function (e) {
+        e.stopPropagation();
+        openImageViewer(this);
+    });
+});
+</script>
+</body>
+</html>
